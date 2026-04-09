@@ -20,11 +20,13 @@ The framework is designed to be:
 
 ✔ UI Automation using Selenium WebDriver  
 ✔ API Automation using RestAssured  
+✔ Hybrid module (UI + API) tests  
 ✔ BDD framework using Cucumber  
 ✔ Test execution using TestNG  
-✔ Parallel execution (UI + API together)  
+✔ Parallel execution  
 ✔ Page Object Model (POM) design  
 ✔ Centralized configuration management  
+✔ Multi Browser compatibility  
 ✔ Logging using Log4j  
 ✔ Allure Reporting integration  
 ✔ JSON schema validation for APIs  
@@ -38,25 +40,39 @@ The framework is designed to be:
 ```text
 Hybrid_Automation_Framework/
 │
-├── api-test/
+├── api-test/src/test/
 │   ├── client/
 │   ├── requestBuilders/
 │   ├── validator/
 │   ├── tests/
 │   └── resources/
+│   └── pom.xml
 │
-├── ui-test/
+├── ui-test/src/test/
 │   ├── hooks/
 │   ├── pages/
 │   ├── runner/
 │   ├── stepDefinitions/
 │   └── resources/features/
+│   └── pom.xml
 │
-├── common/
+├── hybrid-test/src/test/
+│   ├── hooks/
+│   ├── pages/
+│   ├── runner/
+│   ├── stepDefinitions/
+│   ├── client/
+│   ├── requestBuilder/
+│   ├── validator/
+│   └── resources/features/
+│   └── pom.xml
+│
+├── common/src/main/
 │   ├── config/
 │   ├── driver/
 │   ├── utils/
 │   └── resources/
+│   └── pom.xml
 │
 ├── reports/
 ├── pom.xml
@@ -146,10 +162,10 @@ mvn clean test
 
 ---
 
-### 🔹 Run UI + API in Parallel
+### 🔹 Run modules in Parallel
 
 ```bash
-mvn clean test -T 2
+mvn clean test -T 3
 ```
 
 ---
@@ -166,6 +182,14 @@ mvn clean test -pl ui-test
 
 ```bash
 mvn clean test -pl api-test
+```
+
+---
+
+### 🔹 Run Only Hybrid Tests
+
+```bash
+mvn clean test -pl hybrid-test
 ```
 
 ---
@@ -238,7 +262,8 @@ logs/automation.log
 
 ## 📌 Notes
 
-- Ensure internet connection for UI tests  
+- Ensure internet connection tests  
+- You can change browser type in common/resources/config.properties  
 - Ensure firefox browser setup for best results
 - Always run `mvn clean test` before generating reports  
 
