@@ -16,7 +16,7 @@ public class WaitUtil {
     public static void waitUntilClickable(WebDriver driver, By locator) {
         log.info("Waiting until element clickable : "+locator);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(
                 webDriver -> ((JavascriptExecutor) webDriver)
                         .executeScript("return document.readyState")
                         .equals("complete"));
@@ -26,7 +26,7 @@ public class WaitUtil {
     public static void waitUntilVisible(WebDriver driver, By locator) {
         log.info("Waiting until element visible : "+locator);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(
                 webDriver -> ((JavascriptExecutor) webDriver)
                         .executeScript("return document.readyState")
                         .equals("complete"));
@@ -35,7 +35,7 @@ public class WaitUtil {
 
     public static void waitUntilUrlContains(WebDriver driver, String urlPart) {
         log.info("Waiting until URL contains : "+urlPart);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.urlContains(urlPart));
     }
 

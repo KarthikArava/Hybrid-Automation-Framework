@@ -14,6 +14,7 @@
         <module>common</module>
         <module>ui-test</module>
         <module>api-test</module>
+        <module>hybrid-test</module>
     </modules>
 
     <properties>
