@@ -21,9 +21,11 @@ public class DriverFactory {
     public static WebDriver initDriver() {
 
         String browser = prop.getProperty("browser");
+        String env = System.getProperty("env", "local");
+        boolean isHeadless = env.equalsIgnoreCase("ci");
         WebDriver driver = null;
 
-        log.info("Initializing browser..");
+        log.info("Initializing browser: " + browser + " | Environment: " + env);
 
         if(browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
@@ -45,6 +47,14 @@ public class DriverFactory {
             options.addArguments("--disable-popup-blocking");
             options.addArguments("--disable-blink-features=AutomationControlled");
             options.addArguments("--disable-features=IsolateOrigins,site-per-process");
+
+            if (isHeadless) {
+                options.addArguments("--headless=new");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--window-size=1920,1080");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+            }
 
             driver = new ChromeDriver(options);
             log.info("Chrome browser launched successfully");
@@ -70,6 +80,12 @@ public class DriverFactory {
             options.addArguments("--disable-blink-features=AutomationControlled");
             options.addArguments("--disable-features=IsolateOrigins,site-per-process");
 
+            if (isHeadless) {
+                options.addArguments("--headless=new");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--window-size=1920,1080");
+            }
+
             driver = new EdgeDriver(options);
             log.info("Edge browser launched successfully");
         }
@@ -85,6 +101,12 @@ public class DriverFactory {
             options.addPreference("privacy.trackingprotection.enabled", true);
             options.addPreference("browser.contentblocking.category", "strict");
 
+            if (isHeadless) {
+                options.addArguments("-headless");
+                options.addArguments("--width=1920");
+                options.addArguments("--height=1080");
+            }
+
             driver = new FirefoxDriver(options);
             log.info("Firefox driver launched successfully");
         }
@@ -93,7 +115,10 @@ public class DriverFactory {
             throw new RuntimeException("No Such Browser : " + browser);
         }
 
-        driver.manage().window().maximize();
+        if (!isHeadless) {
+            driver.manage().window().maximize();
+        }
+
         return driver;
     }
 
