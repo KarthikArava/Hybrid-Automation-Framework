@@ -1,6 +1,7 @@
 package tests;
 
 import client.ApiClient;
+import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -19,7 +20,8 @@ public class ProductApiTest {
 
     @Test(priority = 1)
     @Story("Get all products")
-    public void getAllProducts(){
+    @Description("VEEVA-11")
+    public void VEEVA_11_getAllProducts(){
         log.info("Start of get all products API");
         Response response = ApiClient.get("/api/productsList");
 
@@ -31,7 +33,8 @@ public class ProductApiTest {
 
     @Test(priority = 2)
     @Story("Search products")
-    public void searchProduct(){
+    @Description("VEEVA-12")
+    public void VEEVA_12_searchProduct(){
         log.info("Start of search product API");
         Response response = ApiClient.post("/api/searchProduct", ProductRequestBuilder.searchProduct("jean"));
 

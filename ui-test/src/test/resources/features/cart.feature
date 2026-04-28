@@ -10,6 +10,7 @@ Feature: Cart Functionality
     And user clicks login button
 
 
+  @VEEVA-4
   @AddToCart
   Scenario: Add product to cart and validate
 
@@ -18,6 +19,7 @@ Feature: Cart Functionality
     And user clicks view cart
     Then product should be visible in the cart
 
+  @VEEVA-5
   @RemoveFromCart
   Scenario: Remove product from cart and validate
 

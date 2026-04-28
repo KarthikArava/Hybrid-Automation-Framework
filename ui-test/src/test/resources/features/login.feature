@@ -9,6 +9,7 @@ Feature: Login Functionality
     And user see login "Login to your account"
 
 
+  @VEEVA-2
   @ValidLogin
   Scenario: Login with valid credentials
 
@@ -17,6 +18,7 @@ Feature: Login Functionality
     Then user should see valid username on home page
 
 
+  @VEEVA-3
   @InvalidLogin
   Scenario: Login with invalid credentials
 

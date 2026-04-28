@@ -1,5 +1,6 @@
 Feature: Hybrid Scenario
 
+  @VEEVA-7
   Scenario: Creating user by API and validating by UI
 
     When the user account created through API request

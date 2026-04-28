@@ -1,6 +1,7 @@
 @UI @Register
 Feature: User Registration
 
+  @VEEVA-6
   Scenario: Register a new user successfully
 
     Given user is on the home page

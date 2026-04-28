@@ -1,6 +1,7 @@
 package tests;
 
 import client.ApiClient;
+import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -19,7 +20,8 @@ public class UserApiTest {
 
     @Test(priority = 3)
     @Story("Create user")
-    public void createUser(){
+    @Description("VEEVA-8")
+    public void VEEVA_8_createUser(){
         log.info("Start of create user API");
         Response response = ApiClient.post("/api/createAccount", UserRequestBuilder.createUser());
 
@@ -31,7 +33,8 @@ public class UserApiTest {
 
     @Test(priority = 4, dependsOnMethods = "createUser")
     @Story("Update user")
-    public void updateUser(){
+    @Description("VEEVA-9")
+    public void VEEVA_9_updateUser(){
         log.info("Start of update user API");
         Response response = ApiClient.put("/api/updateAccount", UserRequestBuilder.updateUser());
 
@@ -43,7 +46,8 @@ public class UserApiTest {
 
     @Test(priority = 5, dependsOnMethods = "createUser")
     @Story("Delete user")
-    public void deleteUser(){
+    @Description("VEEVA-10")
+    public void VEEVA_10_deleteUser(){
         log.info("Start of delete user API");
         Response response = ApiClient.delete("/api/deleteAccount",UserRequestBuilder.deleteUser());
 
