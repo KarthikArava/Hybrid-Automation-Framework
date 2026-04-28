@@ -31,7 +31,7 @@ public class UserApiTest {
         log.info("End of create user API\n");
     }
 
-    @Test(priority = 4, dependsOnMethods = "createUser")
+    @Test(priority = 4, dependsOnMethods = "VEEVA_8_createUser")
     @Story("Update user")
     @Description("VEEVA-9")
     public void VEEVA_9_updateUser(){
@@ -44,7 +44,7 @@ public class UserApiTest {
         log.info("End of update user API\n");
     }
 
-    @Test(priority = 5, dependsOnMethods = "createUser")
+    @Test(priority = 5, dependsOnMethods = "VEEVA_8_createUser")
     @Story("Delete user")
     @Description("VEEVA-10")
     public void VEEVA_10_deleteUser(){
