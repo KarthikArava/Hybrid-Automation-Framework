@@ -105,7 +105,7 @@ public class DriverFactory {
                 options.addArguments("-headless");
                 options.addArguments("--width=1920");
                 options.addArguments("--height=1080");
-                options.setBinary("/opt/firefox/firefox");
+                options.setBinary("/usr/local/bin/firefox");
                 options.addArguments("--no-sandbox");
             }
 
