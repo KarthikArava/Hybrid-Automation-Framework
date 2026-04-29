@@ -1,7 +1,6 @@
 package tests;
 
 import client.ApiClient;
-import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -20,10 +19,9 @@ public class NegativeApiTest {
 
     private static final Logger log = LoggerUtil.getLogger(NegativeApiTest.class);
 
-    @Test(priority = 6)
+    @Test(priority = 6, description = "VEEVA-13")
     @Story("Negative search case")
-    @Description("VEEVA-13")
-    public void VEEVA_13_searchProductNegative(){
+    public void searchProductNegative(){
         log.info("Start of Negative test case");
         Map<String,String> body = new HashMap<>();
 

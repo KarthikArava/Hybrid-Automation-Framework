@@ -1,7 +1,6 @@
 package tests;
 
 import client.ApiClient;
-import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -18,10 +17,9 @@ public class UserApiTest {
 
     private static final Logger log = LoggerUtil.getLogger(UserApiTest.class);
 
-    @Test(priority = 3)
+    @Test(priority = 3, description = "VEEVA-8")
     @Story("Create user")
-    @Description("VEEVA-8")
-    public void VEEVA_8_createUser(){
+    public void createUser(){
         log.info("Start of create user API");
         Response response = ApiClient.post("/api/createAccount", UserRequestBuilder.createUser());
 
@@ -31,10 +29,9 @@ public class UserApiTest {
         log.info("End of create user API\n");
     }
 
-    @Test(priority = 4, dependsOnMethods = "VEEVA_8_createUser")
+    @Test(priority = 4, dependsOnMethods = "createUser", description = "VEEVA-9")
     @Story("Update user")
-    @Description("VEEVA-9")
-    public void VEEVA_9_updateUser(){
+    public void updateUser(){
         log.info("Start of update user API");
         Response response = ApiClient.put("/api/updateAccount", UserRequestBuilder.updateUser());
 
@@ -44,10 +41,9 @@ public class UserApiTest {
         log.info("End of update user API\n");
     }
 
-    @Test(priority = 5, dependsOnMethods = "VEEVA_8_createUser")
+    @Test(priority = 5, dependsOnMethods = "createUser", description = "VEEVA-10")
     @Story("Delete user")
-    @Description("VEEVA-10")
-    public void VEEVA_10_deleteUser(){
+    public void deleteUser(){
         log.info("Start of delete user API");
         Response response = ApiClient.delete("/api/deleteAccount",UserRequestBuilder.deleteUser());
 
