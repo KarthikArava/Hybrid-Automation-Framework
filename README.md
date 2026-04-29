@@ -173,7 +173,7 @@ mvn clean test -T 3
 ### 🔹 Run Only UI Tests
 
 ```bash
-mvn clean test -pl ui-test
+mvn clean test -pl ui-test -am
 ```
 
 ---
@@ -181,7 +181,7 @@ mvn clean test -pl ui-test
 ### 🔹 Run Only API Tests
 
 ```bash
-mvn clean test -pl api-test
+mvn clean test -pl api-test -am
 ```
 
 ---
@@ -189,7 +189,7 @@ mvn clean test -pl api-test
 ### 🔹 Run Only Hybrid Tests
 
 ```bash
-mvn clean test -pl hybrid-test
+mvn clean test -pl hybrid-test -am
 ```
 
 ---
