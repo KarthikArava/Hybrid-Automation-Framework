@@ -107,6 +107,16 @@ public class DriverFactory {
                 options.addArguments("--height=1080");
                 options.setBinary("/usr/local/bin/firefox");
                 options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--disable-software-rasterizer");
+                options.addArguments("--disable-dev-tools");
+                options.addArguments("--disable-extensions");
+                options.addArguments("--disable-backgrounding-occluded-windows");
+                options.addPreference("gfx.webrender.force-disabled", true);
+                options.addPreference("gfx.xrender.enabled", false);
+                options.addPreference("layers.acceleration.disabled", true);
+                options.addPreference("media.hardware-video-decoding.enabled", false);
             }
 
             driver = new FirefoxDriver(options);
